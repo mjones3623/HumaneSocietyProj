@@ -17,7 +17,7 @@ namespace HumaneSociety
 
         internal static List<USState> GetStates()
         {
-            List<USState> allStates = db.USStates.ToList();       
+            List<USState> allStates = db.USStates.ToList();
 
             return allStates;
         }
@@ -166,18 +166,45 @@ namespace HumaneSociety
         // TODO: Allow any of the CRUD operations to occur here
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
-            throw new NotImplementedException();
+            switch (crudOperation)
+            {
+                case "create":
+                    db.Employees.InsertOnSubmit(employee);
+                    db.SubmitChanges();
+                    break;
+                case "delete":
+                    db.Employees.DeleteOnSubmit(employee);
+                    db.SubmitChanges();
+                    break;
+                case "read":
+                    UserInterface.DisplayEmployeeInfo(employee);
+                    break;
+                case "update":
+                    Employee updatedEmployee = db.Employees.Where(e => e.EmployeeId == employee.EmployeeId).Single();
+                    updatedEmployee.FirstName = employee.FirstName;
+                    updatedEmployee.LastName = employee.LastName;
+                    updatedEmployee.UserName = employee.UserName;
+                    updatedEmployee.Password = employee.Password;
+                    updatedEmployee.Email = employee.Email;
+                    db.SubmitChanges();
+                    break;
+                default:
+                    break;
+            }
         }
 
         // TODO: Animal CRUD Operations
         internal static void AddAnimal(Animal animal)
         {
-            throw new NotImplementedException();
+            db.Animals.InsertOnSubmit(animal);
+            db.SubmitChanges();
         }
 
         internal static Animal GetAnimalByID(int id)
         {
-            throw new NotImplementedException();
+            Animal animal = new Animal();
+            animal = db.Animals.Where(i => i.AnimalId == id).FirstOrDefault();
+            return animal;            
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)

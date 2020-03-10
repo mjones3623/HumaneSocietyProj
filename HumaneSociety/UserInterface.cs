@@ -137,7 +137,7 @@ namespace HumaneSociety
             Console.ReadLine();
 
         }
-
+        
         private static string BoolToYesNo(bool? input)
         {
             if (input == true)
@@ -219,6 +219,12 @@ namespace HumaneSociety
                     break;
             }
             return searchParameters;
+        }
+        public static void DisplayEmployeeInfo(Employee employee)
+        {
+            List<string> info = new List<string>() { "ID: " + employee.EmployeeId, employee.FirstName + " " + employee.LastName, "Username: " + employee.UserName, "Email: " + employee.Email };
+            DisplayUserOptions(info);
+            Console.ReadLine();
         }
     }
 }
