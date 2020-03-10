@@ -10,12 +10,18 @@ namespace HumaneSociety
     {
         static void Main(string[] args)
         {
+<<<<<<< HEAD
             //PointOfEntry.Run();
 
             int animalId = 2;
             
             Query.GetRoom(animalId);
 
+=======
+            PointOfEntry.Run();
+            //Animal animal = new Animal();
+            //Query.AddAnimal(animal);
+>>>>>>> 5978f0266be0e5e830a00e805364c80511af92af
         }
     }
 }
