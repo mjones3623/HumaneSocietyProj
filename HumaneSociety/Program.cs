@@ -11,6 +11,8 @@ namespace HumaneSociety
         static void Main(string[] args)
         {
             PointOfEntry.Run();
+            //Animal animal = new Animal();
+            //Query.AddAnimal(animal);
         }
     }
 }
