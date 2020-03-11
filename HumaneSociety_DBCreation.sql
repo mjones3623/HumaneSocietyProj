@@ -6,11 +6,11 @@ INSERT INTO Rooms VALUES('2','2');
 INSERT INTO Rooms VALUES('3','3');
 INSERT INTO Rooms VALUES('4','4');
 INSERT INTO Rooms VALUES('5','5');
-INSERT INTO Rooms VALUES('6','null');
-INSERT INTO Rooms VALUES('7','null');
-INSERT INTO Rooms VALUES('8','null');
-INSERT INTO Rooms VALUES('9','null');
-INSERT INTO Rooms VALUES('10','null');
+INSERT INTO Rooms VALUES('6',null);
+INSERT INTO Rooms VALUES('7',null);
+INSERT INTO Rooms VALUES('8',null);
+INSERT INTO Rooms VALUES('9',null);
+INSERT INTO Rooms VALUES('10',null);
 
 INSERT INTO Addresses VALUES('100 North Ave.','Springfield','1','33456');
 INSERT INTO Addresses VALUES('100 South Ave.','Mayfield','2','33445');
