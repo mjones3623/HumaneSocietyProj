@@ -252,6 +252,7 @@ namespace HumaneSociety
         // TODO: Animal Multi-Trait Search
         internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
         {
+
             IQueryable<Animal> animalSearchList = db.Animals;
             foreach (KeyValuePair<int, string> entry in updates)
             {
@@ -268,20 +269,27 @@ namespace HumaneSociety
             }
             return animalSearchList;
         }    
-        // TODO: Misc Animal Things
+
         internal static int GetCategoryId(string categoryName)
         {
-            throw new NotImplementedException();
+           
+             var catOnDb = db.Categories.Where(i => i.Name == categoryName ).FirstOrDefault();
+
+            return catOnDb.CategoryId;
         }
         
         internal static Room GetRoom(int animalId)
         {
-            throw new NotImplementedException();
+            var roomFromAnimalId = db.Rooms.Where(i => i.AnimalId == animalId).FirstOrDefault();
+
+            return roomFromAnimalId;
         }
         
         internal static int GetDietPlanId(string dietPlanName)
         {
-            throw new NotImplementedException();
+            var dietPlanFromId = db.DietPlans.Where(i => i.Name == dietPlanName).FirstOrDefault();
+
+            return dietPlanFromId.DietPlanId;
         }
 
         // TODO: Adoption CRUD Operations
