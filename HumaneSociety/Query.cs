@@ -264,7 +264,24 @@ namespace HumaneSociety
                     case 2:
                         animalSearchList = animalSearchList.Where(a => a.Name == entry.Value);
                         break;
-                        
+                    case 3:
+                        animalSearchList = animalSearchList.Where(a => a.Age == Convert.ToInt32(entry.Value));
+                        break;
+                    case 4:
+                        animalSearchList = animalSearchList.Where(a => a.Demeanor == entry.Value);
+                        break;
+                    case 5:
+                        animalSearchList = animalSearchList.Where(a => a.KidFriendly == Convert.ToBoolean(entry.Value));
+                        break;
+                    case 6:
+                        animalSearchList = animalSearchList.Where(a => a.PetFriendly == Convert.ToBoolean(entry.Value));
+                        break;
+                    case 7:
+                        animalSearchList = animalSearchList.Where(a => a.Weight == Convert.ToInt32(entry.Value));
+                        break;
+                    case 8:
+                        animalSearchList = animalSearchList.Where(a => a.DietPlanId == Convert.ToInt32(entry.Value));
+                        break;
                 }
             }
             return animalSearchList;
