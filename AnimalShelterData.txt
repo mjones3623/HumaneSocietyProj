@@ -1,0 +1,49 @@
+
+
+INSERT INTO Categories VALUES('Cat');  
+INSERT INTO Categories VALUES('Dog');
+INSERT INTO Categories VALUES('Bird');  
+INSERT INTO Categories VALUES('Reptile');
+INSERT INTO Categories VALUES('Rodent');
+
+INSERT INTO DietPlans VALUES('DogFood','Dry','1'); 
+INSERT INTO DietPlans VALUES('CatFood','Canned','1');
+INSERT INTO DietPlans VALUES('BirdFood','Seeds','2'); 
+INSERT INTO DietPlans VALUES('ReptileFood','Bugs','2');
+INSERT INTO DietPlans VALUES('RodentFood','Vegetables','1');
+
+INSERT INTO Animals VALUES('Digger','50','10','Gentle','True','True','Female','Pending','1','1','1');
+INSERT INTO Animals VALUES('Carla','10','9','Aggressive','False','False','Male','Available','2','2','2');
+INSERT INTO Animals VALUES('Betty','1','12','Aggressive','False','False','Male','Available','3','3','3');
+INSERT INTO Animals VALUES('Ralph','5','4','Gentle','True','True','Female','Pending','4','4','4');
+INSERT INTO Animals VALUES('Roger','3','2','Gentle','True','True','Male','Available','5','5','5');
+
+INSERT INTO Rooms VALUES('1','1');
+INSERT INTO Rooms VALUES('2','2');
+INSERT INTO Rooms VALUES('3','3');
+INSERT INTO Rooms VALUES('4','4');
+INSERT INTO Rooms VALUES('5','5');
+INSERT INTO Rooms VALUES('6','null');
+INSERT INTO Rooms VALUES('7','null');
+INSERT INTO Rooms VALUES('8','null');
+INSERT INTO Rooms VALUES('9','null');
+INSERT INTO Rooms VALUES('10','null');
+
+INSERT INTO Employees VALUES('Bob','Jones','bjones','jbob','001','bob@gmail.com');
+INSERT INTO Employees VALUES('Sue','Smith','ssmith','ssue','002','sue@gmail.com');
+INSERT INTO Employees VALUES('Charles','Larson','clarson','lcharles','003','charles@gmail.com');
+INSERT INTO Employees VALUES('Martha','Bennet','mbennet','bmartha','004','martha@gmail.com');
+INSERT INTO Employees VALUES('Chad','Johnson','cjohnson','jchad','005','chad@gmail.com');
+
+INSERT INTO Clients VALUES('John','Jenson','jjenson','jjohn','1','jjenson@gmail.com');
+INSERT INTO Clients VALUES('Terry','Bannister','tbannister','bterry','2','tbannister@gmail.com');
+INSERT INTO Clients VALUES('Melissa','Hartman','mhartman','hmelissa','3','mhartman@gmail.com');
+INSERT INTO Clients VALUES('Fred','Chandler','fchandler','cfred','4','fchandler@gmail.com');
+INSERT INTO Clients VALUES('Bart','Roberts','broberts','rbart','5','broberts@gmail.com');
+
+INSERT INTO Addresses VALUES('100 North Ave.','Springfield','1','33456');
+INSERT INTO Addresses VALUES('100 South Ave.','Mayfield','2','33445');
+INSERT INTO Addresses VALUES('100 East Ave.','Pewaukee','3','35924');
+INSERT INTO Addresses VALUES('100 West Ave.','Brookfield','4','44598');
+INSERT INTO Addresses VALUES('100 Northwest Ave.','Oldtown','5','77654');
+
