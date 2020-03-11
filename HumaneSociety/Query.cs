@@ -325,9 +325,7 @@ namespace HumaneSociety
                 db.SubmitChanges();                      
                 
             }          
-            
-
-
+                        
         }
 
         internal static void RemoveAdoption(int animalId, int clientId)
@@ -349,7 +347,17 @@ namespace HumaneSociety
 
         internal static void UpdateShot(string shotName, Animal animal)
         {
-            throw new NotImplementedException();
+            AnimalShot animalShot = new AnimalShot();
+            animalShot.AnimalId = animal.AnimalId;
+
+            var x = db.Shots.Where(i => i.Name == shotName).FirstOrDefault();
+            
+            animalShot.ShotId = x.ShotId;
+            animalShot.DateReceived = DateTime.Now;
+
+            db.AnimalShots.InsertOnSubmit(animalShot);
+            db.SubmitChanges();
+            
         }
     }
 }
