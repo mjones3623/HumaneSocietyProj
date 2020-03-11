@@ -295,33 +295,77 @@ namespace HumaneSociety
         // TODO: Adoption CRUD Operations
         internal static void Adopt(Animal animal, Client client)
         {
-            throw new NotImplementedException();
+            Adoption adoption = new Adoption();
+
+            adoption.ClientId = client.ClientId;
+            adoption.AnimalId = animal.AnimalId;
+            adoption.ApprovalStatus = "Pending";
+            adoption.AdoptionFee = 75;
+            adoption.PaymentCollected = false;
+
+            db.Adoptions.InsertOnSubmit(adoption);
+            db.SubmitChanges();
+                                
+
         }
 
         internal static IQueryable<Adoption> GetPendingAdoptions()
         {
-            throw new NotImplementedException();
+            IQueryable<Adoption> pendingAdoptionsList = db.Adoptions;
+
+            pendingAdoptionsList = db.Adoptions.Where(i => i.ApprovalStatus == "Pending");
+
+            return pendingAdoptionsList;
         }
 
         internal static void UpdateAdoption(bool isAdopted, Adoption adoption)
         {
-            throw new NotImplementedException();
+            
+            if (isAdopted == true)
+            {
+                adoption.ApprovalStatus = "Approved";
+                adoption.PaymentCollected = true;
+                
+                db.SubmitChanges();                      
+                
+            }          
+                        
         }
 
         internal static void RemoveAdoption(int animalId, int clientId)
         {
-            throw new NotImplementedException();
+            var x = db.Adoptions.Where(i => i.AnimalId == animalId).FirstOrDefault();
+            db.Adoptions.DeleteOnSubmit(x);
+
+            var y = db.Adoptions.Where(j => j.ClientId == clientId).FirstOrDefault();
+            db.Adoptions.DeleteOnSubmit(y);
+
+
         }
 
         // TODO: Shots Stuff
         internal static IQueryable<AnimalShot> GetShots(Animal animal)
         {
-            throw new NotImplementedException();
+            IQueryable<AnimalShot> animalShotSearchList = db.AnimalShots;
+
+            animalShotSearchList = db.AnimalShots.Where(i => i.AnimalId == animal.AnimalId);
+
+            return animalShotSearchList;
         }
 
         internal static void UpdateShot(string shotName, Animal animal)
         {
-            throw new NotImplementedException();
+            AnimalShot animalShot = new AnimalShot();
+            animalShot.AnimalId = animal.AnimalId;
+
+            var x = db.Shots.Where(i => i.Name == shotName).FirstOrDefault();
+            
+            animalShot.ShotId = x.ShotId;
+            animalShot.DateReceived = DateTime.Now;
+
+            db.AnimalShots.InsertOnSubmit(animalShot);
+            db.SubmitChanges();
+            
         }
     }
 }
