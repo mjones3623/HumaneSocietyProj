@@ -77,6 +77,7 @@ namespace HumaneSociety
             Client clientFromDb = null;
 
             try
+
             {
                 clientFromDb = db.Clients.Where(c => c.ClientId == clientWithUpdates.ClientId).Single();
             }
@@ -196,15 +197,18 @@ namespace HumaneSociety
         // TODO: Animal CRUD Operations
         internal static void AddAnimal(Animal animal)
         {
+           
             db.Animals.InsertOnSubmit(animal);
             db.SubmitChanges();
         }
 
         internal static Animal GetAnimalByID(int id)
         {
+            
             //Animal animal = new Animal(); not sure which versin is correct doesnt make sense to make a new animal object yet required to make its reference
             Animal animal = db.Animals.Where(i => i.AnimalId == id).FirstOrDefault();
-            return animal;            
+            return animal;
+
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
@@ -289,14 +293,21 @@ namespace HumaneSociety
 
         internal static int GetCategoryId(string categoryName)
         {
-           
-             var catOnDb = db.Categories.Where(i => i.Name == categoryName ).FirstOrDefault();
-
-            return catOnDb.CategoryId;
+           if(categoryName == null)
+            {
+                throw new NullReferenceException();
+            }
+            else
+            {
+                var catOnDb = db.Categories.Where(i => i.Name == categoryName).FirstOrDefault();
+                return catOnDb.CategoryId;
+            }
+                                  
         }
         
         internal static Room GetRoom(int animalId)
         {
+                                 
             var roomFromAnimalId = db.Rooms.Where(i => i.AnimalId == animalId).FirstOrDefault();
 
             return roomFromAnimalId;
@@ -304,9 +315,17 @@ namespace HumaneSociety
         
         internal static int GetDietPlanId(string dietPlanName)
         {
-            var dietPlanFromId = db.DietPlans.Where(i => i.Name == dietPlanName).FirstOrDefault();
+            if(dietPlanName == null)
+            {
+                throw new NullReferenceException();
+            }
+            else
+            {
+                var dietPlanFromId = db.DietPlans.Where(i => i.Name == dietPlanName).FirstOrDefault();
 
-            return dietPlanFromId.DietPlanId;
+                return dietPlanFromId.DietPlanId;
+            }
+            
         }
 
         // TODO: Adoption CRUD Operations
@@ -322,8 +341,7 @@ namespace HumaneSociety
 
             db.Adoptions.InsertOnSubmit(adoption);
             db.SubmitChanges();
-                                
-
+            
         }
 
         internal static IQueryable<Adoption> GetPendingAdoptions()
@@ -356,8 +374,7 @@ namespace HumaneSociety
 
             var y = db.Adoptions.Where(j => j.ClientId == clientId).FirstOrDefault();
             db.Adoptions.DeleteOnSubmit(y);
-
-
+            
         }
 
         // TODO: Shots Stuff
@@ -372,16 +389,24 @@ namespace HumaneSociety
 
         internal static void UpdateShot(string shotName, Animal animal)
         {
-            AnimalShot animalShot = new AnimalShot();
-            animalShot.AnimalId = animal.AnimalId;
+            if(shotName == null || animal == null)
+            {
+                throw new NullReferenceException();
+            }
+            else
+            {
+                AnimalShot animalShot = new AnimalShot();
+                animalShot.AnimalId = animal.AnimalId;
 
-            var x = db.Shots.Where(i => i.Name == shotName).FirstOrDefault();
-            
-            animalShot.ShotId = x.ShotId;
-            animalShot.DateReceived = DateTime.Now;
+                var x = db.Shots.Where(i => i.Name == shotName).FirstOrDefault();
 
-            db.AnimalShots.InsertOnSubmit(animalShot);
-            db.SubmitChanges();
+                animalShot.ShotId = x.ShotId;
+                animalShot.DateReceived = DateTime.Now;
+
+                db.AnimalShots.InsertOnSubmit(animalShot);
+                db.SubmitChanges();
+            }
+
             
         }
     }

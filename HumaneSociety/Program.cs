@@ -10,11 +10,11 @@ namespace HumaneSociety
     {
         static void Main(string[] args)
         {
+            //Admin admin = new Admin();
 
+            //admin.LogIn();
 
-
-
-            PointOfEntry.Run();
+            //PointOfEntry.Run();
         }
     }
 }

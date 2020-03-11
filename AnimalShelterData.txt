@@ -23,11 +23,11 @@ INSERT INTO Rooms VALUES('2','2');
 INSERT INTO Rooms VALUES('3','3');
 INSERT INTO Rooms VALUES('4','4');
 INSERT INTO Rooms VALUES('5','5');
-INSERT INTO Rooms VALUES('6','null');
-INSERT INTO Rooms VALUES('7','null');
-INSERT INTO Rooms VALUES('8','null');
-INSERT INTO Rooms VALUES('9','null');
-INSERT INTO Rooms VALUES('10','null');
+INSERT INTO Rooms VALUES('6',null);
+INSERT INTO Rooms VALUES('7',null);
+INSERT INTO Rooms VALUES('8',null);
+INSERT INTO Rooms VALUES('9',null);
+INSERT INTO Rooms VALUES('10',null);
 
 INSERT INTO Employees VALUES('Bob','Jones','bjones','jbob','001','bob@gmail.com');
 INSERT INTO Employees VALUES('Sue','Smith','ssmith','ssue','002','sue@gmail.com');
