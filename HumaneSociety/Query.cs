@@ -202,29 +202,72 @@ namespace HumaneSociety
 
         internal static Animal GetAnimalByID(int id)
         {
-            Animal animal = new Animal();
-            animal = db.Animals.Where(i => i.AnimalId == id).FirstOrDefault();
+            //Animal animal = new Animal(); not sure which versin is correct doesnt make sense to make a new animal object yet required to make its reference
+            Animal animal = db.Animals.Where(i => i.AnimalId == id).FirstOrDefault();
             return animal;            
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
-        {            
-            
+        {
+            Animal animal = GetAnimalByID(animalId);//animal id gets passed in so do i need the getanimal id method here?
+            foreach (KeyValuePair<int, string> entry in updates)
+            {
+                switch (entry.Key)
+                {//should be 7 cases
+                    case 1:
+                        animal.CategoryId = GetCategoryId(entry.Value);
+                        return;
+                    case 2:
+                        animal.Name = entry.Value;
+                        return;
+                    case 3:
+                        animal.Age = Convert.ToInt32(entry.Value);
+                        return;
+                    case 4:
+                        animal.Demeanor = entry.Value;
+                        return;
+                    case 5:
+                        animal.KidFriendly = Convert.ToBoolean(entry.Value);
+                        return;
+                    case 6:
+                        animal.PetFriendly = Convert.ToBoolean(entry.Value);
+                        return;
+                    case 7:
+                        animal.Weight = Convert.ToInt32(entry.Value);
+                        return;
+                    default:
+                        return;
+                }
+            }
+            db.Animals.InsertOnSubmit(animal);
+            db.SubmitChanges();
         }
 
         internal static void RemoveAnimal(Animal animal)
-        {
-
+        {//not sure if this is acuratae may need its id but dont think so since that is apart of the animal object
             db.Animals.DeleteOnSubmit(animal);
             db.SubmitChanges();
         }
-        
+
         // TODO: Animal Multi-Trait Search
         internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
         {
-            throw new NotImplementedException();
-        }
-         
+            IQueryable<Animal> animalSearchList = db.Animals;
+            foreach (KeyValuePair<int, string> entry in updates)
+            {
+                switch (entry.Key)
+                {//should be 8 cases, will finish rest in the morning
+                    case 1:
+                        animalSearchList = animalSearchList.Where(a => a.CategoryId == GetCategoryId(entry.Value));
+                        break;
+                    case 2:
+                        animalSearchList = animalSearchList.Where(a => a.Name == entry.Value);
+                        break;
+                        
+                }
+            }
+            return animalSearchList;
+        }    
         // TODO: Misc Animal Things
         internal static int GetCategoryId(string categoryName)
         {
