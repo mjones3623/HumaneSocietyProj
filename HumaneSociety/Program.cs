@@ -23,14 +23,16 @@ namespace HumaneSociety
 
             //Query.GetAnimalByID(1);
             //Query.GetRoom(5);
-            
-            var animal = Query.ProcessCSV("animals.csv");
-            foreach (var item in animal)
+           
+            //.csv file import
+            var animals = Query.ProcessCSV("animals.csv");
+            foreach (var animal in animals)
             {
-                Console.WriteLine();
+
+                Query.AddAnimal(animal);
+
             }
 
-          //  AddAnimal(animal);
             //PointOfEntry.Run();
 
         }
