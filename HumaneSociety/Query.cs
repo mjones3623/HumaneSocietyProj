@@ -410,22 +410,15 @@ namespace HumaneSociety
 
             
         }
-        private static List<Animal> ProcessCSV(string path)
+       
+        
+            public static List<Animal> ProcessCSV(string path)
         {
             return File.ReadAllLines(path)
                 .Where(row => row.Length > 0)
                 .Select(Animal.ParseRow).ToList();
+           
         }
-        //internal static void ImportCsvFile()
-        //{
-
-        //    Dim dataImport = From line As String In File.ReadAllLines(C: \Users\Jonathan Friedl\Documents\Devcodecamp\HumaneSocietyProj) _
-        //                 Skip 1 _
-        //                 Let CR = line.Split(",") _
-        //                 Select New TblCustomer With {.CustomerId = CR(0), _
-        //  .CustomerName = CR(1), _
-        //  .City = CR(2)}
-
-        //}
+        
     }
 }

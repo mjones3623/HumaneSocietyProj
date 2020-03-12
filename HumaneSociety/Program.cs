@@ -22,10 +22,15 @@ namespace HumaneSociety
             //Query.AddAnimal(animal);
 
             //Query.GetAnimalByID(1);
-            Query.GetRoom(5);
+            //Query.GetRoom(5);
             
-            var animals = Query.ProcessCSV("animals.csv");
+            var animal = Query.ProcessCSV("animals.csv");
+            foreach (var item in animal)
+            {
+                Console.WriteLine();
+            }
 
+          //  AddAnimal(animal);
             //PointOfEntry.Run();
 
         }
