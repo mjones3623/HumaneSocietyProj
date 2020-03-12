@@ -24,4 +24,4 @@ INSERT INTO Clients VALUES('Melissa','Hartman','mhartman','hmelissa','3','mhartm
 INSERT INTO Clients VALUES('Fred','Chandler','fchandler','cfred','4','fchandler@gmail.com');
 INSERT INTO Clients VALUES('Bart','Roberts','broberts','rbart','5','broberts@gmail.com');
 
-Select* From dbo.Clients
+Select* From dbo.Animals

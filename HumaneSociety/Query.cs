@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -200,6 +201,7 @@ namespace HumaneSociety
            
             db.Animals.InsertOnSubmit(animal);
             db.SubmitChanges();
+           // GetAnimalByID(animal.AnimalId);
         }
 
         internal static Animal GetAnimalByID(int id)
@@ -207,7 +209,7 @@ namespace HumaneSociety
             
             //Animal animal = new Animal(); not sure which versin is correct doesnt make sense to make a new animal object yet required to make its reference
             Animal animal = db.Animals.Where(i => i.AnimalId == id).FirstOrDefault();
-            return animal;
+            return animal;          
 
         }
 
@@ -408,5 +410,22 @@ namespace HumaneSociety
 
             
         }
+        private static List<Animal> ProcessCSV(string path)
+        {
+            return File.ReadAllLines(path)
+                .Where(row => row.Length > 0)
+                .Select(Animal.ParseRow).ToList();
+        }
+        //internal static void ImportCsvFile()
+        //{
+
+        //    Dim dataImport = From line As String In File.ReadAllLines(C: \Users\Jonathan Friedl\Documents\Devcodecamp\HumaneSocietyProj) _
+        //                 Skip 1 _
+        //                 Let CR = line.Split(",") _
+        //                 Select New TblCustomer With {.CustomerId = CR(0), _
+        //  .CustomerName = CR(1), _
+        //  .City = CR(2)}
+
+        //}
     }
 }

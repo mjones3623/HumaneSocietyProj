@@ -260,6 +260,7 @@ namespace HumaneSociety
             animal.DietPlanId = Query.GetDietPlanId(animalDietPlanName);
             Query.AddAnimal(animal);
         }
+
         protected override void LogInPreExistingUser()
         {
             List<string> options = new List<string>() { "Please log in", "Enter your username (CaSe SeNsItIvE)" };
